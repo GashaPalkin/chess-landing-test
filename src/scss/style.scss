@@ -434,10 +434,13 @@ section {
   .stage-7::after {
     width: auto !important;
     position: absolute;
-    right: -8%;
+    right: -7%;
     bottom: -10%;
     @include respond-to($md, 9999px) {
       content: url("../img/plane.png");
+    }
+    @include respond-to($md, $lg) {
+      right: -12%;
     }
   }
 }
