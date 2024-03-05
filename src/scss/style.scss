@@ -1,0 +1,640 @@
+@import "base/*.scss";
+@import "global/*.scss";
+@import "**/_*.scss";
+@import "../components/**/*.scss";
+
+/*=============== BREAKPOINTS ===============*/
+
+$xxs: 320px;
+$xs: 500px;
+$sm: 768px;
+$md: 991px;
+$lg: 1100px;
+$xl: 1250px;
+$xxl: 1600px;
+
+@mixin respond-to($breakpoint-min, $breakpoint-max) {
+  @media (min-width: $breakpoint-min) and (max-width: $breakpoint-max) {
+    @content;
+  }
+}
+
+h1 {
+  text-transform: uppercase;
+  font-size: 55px;
+  font-weight: 400;
+}
+
+@media (min-width: 320px) and (max-width: 1400px) {
+  h1 {
+    font-size: calc(32px + (56 - 32) * ((100vw - 320px) / (1400 - 320)));
+  }
+}
+
+h2 {
+  text-transform: uppercase;
+  font-size: 54px;
+  color: #313131;
+  font-weight: 400;
+  margin-bottom: 55px;
+}
+
+@media (min-width: 320px) and (max-width: 1400px) {
+  h2 {
+    font-size: calc(35px + (55 - 35) * ((100vw - 320px) / (1400 - 320)));
+  }
+}
+
+.hide-sm {
+  @include respond-to($xxs, $sm) {
+    display: none;
+  }
+}
+.hide-lg {
+  @include respond-to($sm, 99999px) {
+    display: none;
+  }
+}
+
+.header {
+  position: relative;
+}
+
+.information-block {
+  width: 100%;
+  height: 100vh;
+  background-image: url("../img/main_banner.png");
+  @include respond-to($xxs, 385px) {
+    height: 120vh;
+    background-image: url("../img/cooper.png"), url("../img/main_banner_mobile.png");
+    background-size: contain;
+    background-blend-mode: multiply;
+  }
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: #313131;
+}
+
+.content {
+  max-width: 45%;
+  padding-left: 70px;
+  @include respond-to($xxs, 385px) {
+    margin-bottom: 40%;
+  }
+  @include respond-to($xxs, 480px) {
+    max-width: 100%;
+    padding: 20px;
+    padding-top: 0px;
+  }
+  @include respond-to(480px, $sm) {
+    max-width: 80%;
+  }
+  @include respond-to($sm, $lg) {
+    max-width: 60%;
+  }
+  p {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 24px;
+    margin-bottom: 30px;
+    @include respond-to($xxs, 480px) {
+      text-align: left;
+    }
+  }
+}
+
+.logo {
+  position: absolute;
+  top: 26px;
+  left: 70px;
+  width: 245px;
+  @include respond-to($xxs, $xs) {
+    left: 20px;
+  }
+}
+
+.buttons {
+  display: flex;
+  @include respond-to($xxs, $sm) {
+    flex-direction: column;
+  }
+}
+
+.buttons button {
+  border: 2px solid #1f1f1f;
+  padding: 10px 45px;
+  width: 260px;
+  line-height: 1.3;
+  border-radius: 65px;
+  margin-right: 15px;
+  transition-duration: 0.3s;
+  @include respond-to($xxs, $sm) {
+    margin-bottom: 14px;
+    width: 100%;
+    padding: 10px 25px;
+    margin-bottom: 14px;
+  }
+}
+
+.btn-black {
+  background-color: #1f1f1f;
+  color: white;
+}
+
+.btn-black:hover {
+  background-color: #fbce51;
+  color: #1f1f1f;
+  border-color: transparent;
+}
+
+.btn-transparent {
+  background-color: transparent;
+  color: #1f1f1f;
+  @include respond-to($xxs, 480px) {
+    background-color: white;
+    border: none !important;
+  }
+}
+
+.btn-transparent:hover {
+  background-color: #1f1f1f;
+  color: white;
+}
+
+.ticker {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #f54932;
+  font-size: 22px;
+  text-transform: uppercase;
+  color: white;
+  text-align: center;
+  padding: 10px 0px;
+  display: flex;
+  white-space: nowrap;
+  overflow: hidden;
+  @include respond-to($xxs, $lg) {
+    font-size: 16px;
+  }
+}
+
+#secondTicker {
+  position: relative;
+  @include respond-to($xxs, $lg) {
+    margin-top: 100px;
+  }
+}
+
+section {
+  padding: 80px 70px;
+  @include respond-to($xxs, $md) {
+    padding: 48px 20px;
+  }
+  .red {
+    color: #f54932;
+    font-weight: 700;
+  }
+  .blue {
+    color: #3057a2;
+    font-size: 20px;
+    text-transform: none;
+  }
+}
+
+.info {
+  h3 {
+    font-size: 36px;
+    text-transform: uppercase;
+    font-weight: 400;
+    @include respond-to($md, $xl) {
+      font-size: 32px;
+    }
+    @include respond-to($xxs, $md) {
+      font-size: 28px;
+    }
+  }
+  .info-block-1 {
+    align-items: center;
+    margin-bottom: 40px;
+    gap: 50px;
+    @include respond-to($xxs, $sm) {
+      flex-direction: column;
+      margin-bottom: 20px;
+      .intro {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+      }
+    }
+  }
+  .info-block-2 {
+    align-items: center;
+    gap: 10px;
+    @include respond-to($xxs, $md) {
+      flex-direction: column;
+      gap: 20px;
+    }
+  }
+  .left-side {
+    flex-basis: 45%;
+  }
+  .right-side {
+    flex-basis: 55%;
+  }
+
+  table {
+    border-collapse: collapse;
+    border: 2px solid transparent;
+    width: 100%;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    color: #313131;
+  }
+  td,
+  th {
+    padding: 0px;
+    border: 1px solid #d0d0d0;
+    line-height: 3;
+    font-size: 20px;
+    @include respond-to($xxs, $sm) {
+      line-height: 2;
+      display: flex;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+    }
+    b {
+      padding-left: 16px;
+      @include respond-to($xxs, $sm) {
+        padding-left: 0px;
+      }
+    }
+    .red-line {
+      text-decoration: line-through 2px #f54932;
+    }
+  }
+  td:nth-child(2n + 1) {
+    border-bottom: none;
+  }
+}
+
+.stages {
+  position: relative;
+  @include respond-to($xxs, $sm) {
+    h2 {
+      margin-bottom: 35%;
+    }
+    h2::before {
+      width: auto !important;
+      position: absolute;
+      top: 30%;
+      left: 0%;
+      content: url("../img/plane.png");
+      z-index: 10;
+    }
+  }
+  @include respond-to($xxs, 360px) {
+    h2 {
+      margin-bottom: 20%;
+    }
+    h2::before {
+      display: none;
+    }
+  }
+  @include respond-to(361px, 380px) {
+    h2 {
+      margin-bottom: 40%;
+    }
+    h2::before {
+      top: 27%;
+      left: -2%;
+      transform: scale(0.8);
+    }
+  }
+  @include respond-to(381px, 450px) {
+    h2 {
+      margin-bottom: 40%;
+    }
+    h2::before {
+      top: 33%;
+      left: -5%;
+      transform: scale(0.8);
+    }
+  }
+  @include respond-to(500px, $sm) {
+    h2 {
+      margin-bottom: 30%;
+    }
+    h2::before {
+      top: 30%;
+    }
+  }
+
+  .stagesSwiper {
+    @include respond-to($sm, 9999px) {
+      display: none;
+    }
+  }
+  .control {
+    gap: 120px;
+  }
+  .control {
+    @include respond-to($sm, 9999px) {
+      display: none;
+    }
+  }
+  .swiper-slide {
+    flex-direction: column;
+    text-align: left;
+    background-image: url(../img/cooper.png);
+    min-height: 300px;
+  }
+  .blue {
+    width: 300px;
+    display: inline-block;
+  }
+  .grid-wrapper {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: #fff;
+    color: #444;
+    @include respond-to($xxs, $sm) {
+      display: none;
+    }
+  }
+
+  .box {
+    background-color: #eee2cf;
+    @include respond-to($sm, 9999px) {
+      background-image: url("../img/cooper.png");
+    }
+
+    color: #313131;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: 500;
+    display: flex;
+    gap: 10px;
+    @include respond-to($xxs, $sm) {
+      width: 100%;
+    }
+    .badge {
+      margin-top: 5px;
+      span {
+        font-weight: 600;
+        background-color: white;
+        border-radius: 60%;
+        padding: 6px 12px;
+      }
+    }
+  }
+  .stage-1 {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  .stage-2 {
+    grid-column: 2;
+    grid-row: 1;
+  }
+  .stage-3 {
+    grid-column: 3;
+    grid-row: 1 / 3;
+  }
+  .stage-4 {
+    grid-column: 1;
+    grid-row: 2;
+  }
+  .stage-5 {
+    grid-column: 2;
+    grid-row: 2;
+  }
+  .stage-6 {
+    grid-column: 1;
+    grid-row: 3;
+  }
+  .stage-7 {
+    position: relative;
+    grid-column: 2 / span 2;
+    grid-row: 3;
+    p {
+      max-width: 55%;
+      @include respond-to($xxs, $md) {
+        max-width: 100%;
+      }
+      @include respond-to($md, $xl) {
+        max-width: 45%;
+      }
+    }
+  }
+  .stage-7::after {
+    width: auto !important;
+    position: absolute;
+    right: -8%;
+    bottom: -10%;
+    @include respond-to($md, 9999px) {
+      content: url("../img/plane.png");
+    }
+  }
+}
+
+.participants {
+  position: relative;
+  margin-top: 100px;
+  .participant {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .portrait {
+      padding: 20px 20px 0px 20px;
+      background-image: url("../img/cooper.png");
+      opacity: 0.8;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-bottom: 25px;
+      img {
+        height: 100%;
+        width: auto;
+      }
+    }
+    .name {
+      color: #313131;
+      font-size: 24px;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    p {
+      color: #838383;
+      font-size: 20px;
+      font-weight: 400;
+      margin-bottom: 20px;
+    }
+    .btn-blue {
+      border: 1px solid #3057a2;
+      background-color: transparent;
+      color: #3057a2;
+      border-radius: 60px;
+      padding: 12px 20px;
+      font-size: 16px;
+      font-weight: 500;
+      transition-duration: 0.3s;
+    }
+    .btn-blue:hover {
+      background-color: #3057a2;
+      color: white;
+    }
+  }
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.swiper-button-next,
+.swiper-button-prev,
+.stages-swiper-next,
+.stages-swiper-prev {
+  position: absolute;
+  top: 110px;
+  width: 44px;
+  height: 44px;
+  background-color: #313131;
+  border-radius: 50%;
+  margin-top: calc(0px - (var(--swiper-navigation-size) / 2));
+  color: white;
+  z-index: 10;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition-duration: 0.3s;
+  @include respond-to($xxs, $lg) {
+    position: relative;
+  }
+}
+.swiper-button-next:hover,
+.swiper-button-prev:hover,
+.stages-swiper-next:hover,
+.stages-swiper-prev:hover {
+  background-color: #fbce51;
+}
+
+.swiper-horizontal > .swiper-pagination-bullets,
+.swiper-pagination-bullets.swiper-pagination-horizontal {
+  bottom: -97px;
+  top: auto;
+  left: 0;
+  width: 100%;
+  z-index: 0;
+}
+
+.swiper-pagination-custom {
+  position: absolute;
+  text-align: center;
+  bottom: auto;
+  top: 100px;
+  right: 130px;
+  left: auto;
+  width: auto;
+  @include respond-to($xxs, $lg) {
+    right: auto;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+
+.swiper-button-next,
+.stages-swiper-next {
+  right: 70px;
+  left: auto;
+  @include respond-to($xxs, $lg) {
+    right: auto;
+  }
+}
+
+.swiper-button-prev,
+.stages-swiper-prev {
+  left: auto;
+  right: 180px;
+  @include respond-to($xxs, $lg) {
+    right: auto;
+  }
+}
+
+.control {
+  @include respond-to($xxs, $lg) {
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    display: flex;
+    align-content: center;
+    flex-direction: row-reverse;
+    gap: 70px;
+    transform: translateX(-50%);
+  }
+}
+.stages-swiper-prev:after {
+  content: "prev";
+}
+
+.stages-swiper-next:after {
+  content: "next";
+}
+
+.swiper-button-next:after,
+.swiper-button-prev:after,
+.stages-swiper-next:after,
+.stages-swiper-prev:after {
+  font-family: swiper-icons;
+  text-transform: none !important;
+  font-size: 20px;
+  letter-spacing: 0;
+  font-variant: initial;
+  line-height: 1;
+}
+
+.swiper-button-next.swiper-button-disabled,
+.swiper-button-prev.swiper-button-disabled,
+.stages-swiper-next.swiper-button-disabled,
+.stages-swiper-prev.swiper-button-disabled {
+  background-color: #d6d6d6;
+  opacity: 1;
+  cursor: auto;
+  pointer-events: none;
+}
+
+.swiper-pagination-bullets {
+  top: auto;
+  width: 100%;
+  bottom: -100px;
+}
+
+.footer {
+  padding: 40px 70px 70px 70px;
+  background-color: #e9ded4;
+  color: #313131;
+  @include respond-to($xxs, $md) {
+    padding: 60px 20px 60px 20px;
+  }
+}
