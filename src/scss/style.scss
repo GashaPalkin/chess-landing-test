@@ -434,14 +434,16 @@ section {
   .stage-7::after {
     width: auto !important;
     position: absolute;
-    right: -7%;
+    right: -5%;
     bottom: -10%;
+    transform: scale(.9);
     @include respond-to($md, 9999px) {
       content: url("../img/plane.png");
     }
     @include respond-to($md, $lg) {
-      right: -12%;
-    }
+      right: -12%;  
+      bottom: 10%;   
+    }   
   }
 }
 
